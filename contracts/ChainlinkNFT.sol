@@ -120,8 +120,9 @@ contract ChainlinkNFT is ChainlinkClient, ConfirmedOwner, ERC721URIStorage {
         );
 
         req.add("get", requestLink);
-        req.add("path", "login");
         req.add("path", "html_url");
+
+        tokenIdToLinkName[tokenId] = username;
 
         bytes32 _requestId = sendChainlinkRequest(req, fee);
 
@@ -130,17 +131,15 @@ contract ChainlinkNFT is ChainlinkClient, ConfirmedOwner, ERC721URIStorage {
 
     event ChangeLinkRequestFulfilled(bytes32 indexed requestId);
 
-    function fulfillChangeLink(
-        bytes32 requestId,
-        string memory newLink,
-        string memory newLinkName
-    ) public recordChainlinkFulfillment(requestId) {
+    function fulfillChangeLink(bytes32 requestId, string memory newLink)
+        public
+        recordChainlinkFulfillment(requestId)
+    {
         emit ChangeLinkRequestFulfilled(requestId);
 
         uint256 tokenId = requestIdToTokenId[requestId];
 
         tokenIdToLink[tokenId] = newLink;
-        tokenIdToLinkName[tokenId] = newLinkName;
 
         _setTokenURI(tokenId, getTokenURI(tokenId));
     }
