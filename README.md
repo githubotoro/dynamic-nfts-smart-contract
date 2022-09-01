@@ -1,4 +1,4 @@
-# Dynamic NFTs - Empowering realtime on-chain updates 🔗
+# Dynamic NFTs - Empowered by smart contracts 🔗
 
 🔍 This project helps in creating NFTs that are stored as smart contracts while leveraging Chainlink's features for providing off-chain updation of NFTs.
 
