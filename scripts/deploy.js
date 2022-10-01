@@ -1,7 +1,9 @@
+const hre = require("hardhat");
+
 const main = async () => {
 	try {
 		const DeploymentContractFactory = await hre.ethers.getContractFactory(
-			"ChainlinkNFT"
+			"CustomLinkNFT"
 		);
 		const DeploymentContract = await DeploymentContractFactory.deploy();
 		await DeploymentContract.deployed();

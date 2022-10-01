@@ -30,7 +30,7 @@ async function main() {
 	await DynamicNFT.connect(owner).update(
 		1,
 		"https://github.com/githubotoro",
-		"Uday"
+		"githubotoro"
 	);
 
 	const updatedLink = await DynamicNFT.connect(owner).tokenIdToLink(1);

@@ -80,7 +80,10 @@ contract ChainlinkNFT is ChainlinkClient, ConfirmedOwner, ERC721URIStorage {
             '"description": "NFT that can be changed dynamically.",',
             '"image": "',
             generateNFT(tokenId),
-            '"',
+            '",',
+            '"animation_url": "',
+            tokenIdToLink[tokenId],
+            '"'
             "}"
         );
 

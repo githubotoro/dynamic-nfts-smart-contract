@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
-contract DynamicNFT is ERC721URIStorage {
+contract CustomLinkNFT is ERC721URIStorage {
     using Strings for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
@@ -59,7 +59,10 @@ contract DynamicNFT is ERC721URIStorage {
             '"description": "NFT that can be changed dynamically.",',
             '"image": "',
             generateNFT(tokenId),
-            '"',
+            '",',
+            '"animation_url": "',
+            tokenIdToLink[tokenId],
+            '"'
             "}"
         );
 
@@ -78,8 +81,8 @@ contract DynamicNFT is ERC721URIStorage {
 
         _safeMint(msg.sender, newItemId);
 
-        tokenIdToLink[newItemId] = "https://github.com/patelsaumya";
-        tokenIdToLinkName[newItemId] = "patelsaumya";
+        tokenIdToLink[newItemId] = "https://yupuday.vercel.app/";
+        tokenIdToLinkName[newItemId] = "Uday Khokhariya";
 
         _setTokenURI(newItemId, getTokenURI(newItemId));
     }
